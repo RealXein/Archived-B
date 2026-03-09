@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Archived Dark Theme - Deep Purples, Aged Parchment, Gold Accents */
+    --background: 260 25% 8%;
+    --foreground: 45 30% 85%;
+    --card: 260 20% 12%;
+    --card-foreground: 45 30% 85%;
+    --popover: 260 20% 10%;
+    --popover-foreground: 45 30% 85%;
+    --primary: 45 60% 55%;
+    --primary-foreground: 260 25% 8%;
+    --secondary: 260 15% 18%;
+    --secondary-foreground: 45 30% 85%;
+    --muted: 260 15% 22%;
+    --muted-foreground: 45 15% 60%;
+    --accent: 280 50% 40%;
+    --accent-foreground: 45 30% 90%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 45 30% 90%;
+    --border: 45 30% 25%;
+    --input: 260 15% 15%;
+    --ring: 45 60% 55%;
+    --radius: 0.375rem;
+    
+    /* Custom Archived Colors */
+    --archived-purple-deep: 260 35% 12%;
+    --archived-purple-mid: 270 30% 18%;
+    --archived-purple-light: 280 25% 25%;
+    --archived-gold: 45 70% 55%;
+    --archived-gold-dim: 45 40% 35%;
+    --archived-parchment: 40 25% 75%;
+    --archived-parchment-dark: 40 20% 55%;
+    --archived-ink: 260 30% 15%;
+    --archived-blood: 0 55% 45%;
+    --archived-wrath: 0 60% 50%;
+    --archived-lust: 320 50% 55%;
+    --archived-sloth: 200 30% 45%;
+    --archived-gluttony: 30 60% 50%;
+    --archived-gloom: 260 40% 45%;
+    --archived-pride: 45 70% 55%;
+    --archived-envy: 140 45% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Crimson Text', Georgia, serif;
+    background: linear-gradient(135deg, hsl(260 30% 6%) 0%, hsl(270 25% 10%) 50%, hsl(260 30% 6%) 100%);
+    min-height: 100vh;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  /* Archived Card Style */
+  .archived-card {
+    @apply relative rounded-md border-2 p-4;
+    background: linear-gradient(145deg, hsl(260 20% 12%) 0%, hsl(260 25% 8%) 100%);
+    border-color: hsl(45 40% 30%);
+    box-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .archived-card::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border: 1px solid hsl(45 30% 20%);
+    border-radius: calc(var(--radius) - 2px);
+    pointer-events: none;
+  }
+  
+  /* Gold Accent Border */
+  .gold-border {
+    @apply border-2 rounded-md;
+    border-color: hsl(45 50% 40%);
+    box-shadow: 
+      0 0 10px rgba(212, 175, 55, 0.2),
+      inset 0 0 20px rgba(212, 175, 55, 0.05);
+  }
+  
+  /* Parchment Text Style */
+  .parchment-text {
+    color: hsl(40 25% 75%);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Gothic Header */
+  .gothic-header {
+    font-family: 'Cinzel', serif;
+    color: hsl(45 60% 60%);
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(212, 175, 55, 0.3);
+    letter-spacing: 0.08em;
+  }
+  
+  /* Tab Button Style */
+  .tab-button {
+    @apply px-4 py-2 text-sm font-medium transition-all duration-200;
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(180deg, hsl(260 20% 15%) 0%, hsl(260 25% 10%) 100%);
+    border: 1px solid hsl(45 30% 25%);
+    color: hsl(45 20% 60%);
+  }
+  
+  .tab-button:hover {
+    background: linear-gradient(180deg, hsl(260 20% 20%) 0%, hsl(260 25% 15%) 100%);
+    border-color: hsl(45 50% 40%);
+    color: hsl(45 50% 70%);
+  }
+  
+  .tab-button.active {
+    background: linear-gradient(180deg, hsl(45 40% 30%) 0%, hsl(45 35% 25%) 100%);
+    border-color: hsl(45 60% 50%);
+    color: hsl(45 80% 85%);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  }
+  
+  /* Select Dropdown Style */
+  .archived-select {
+    @apply rounded-md px-3 py-2 text-sm;
+    background: linear-gradient(180deg, hsl(260 15% 15%) 0%, hsl(260 20% 10%) 100%);
+    border: 1px solid hsl(45 30% 25%);
+    color: hsl(40 25% 75%);
+    font-family: 'Crimson Text', serif;
+  }
+  
+  .archived-select:focus {
+    outline: none;
+    border-color: hsl(45 60% 50%);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+  }
+  
+  /* Stat Display */
+  .stat-display {
+    @apply flex items-center justify-between py-1 px-2 rounded;
+    background: hsl(260 20% 10%);
+    border: 1px solid hsl(260 15% 20%);
+  }
+  
+  .stat-label {
+    @apply text-sm;
+    color: hsl(45 20% 55%);
+    font-family: 'Cinzel', serif;
+  }
+  
+  .stat-value {
+    @apply text-sm font-semibold;
+    color: hsl(45 50% 70%);
+  }
+  
+  /* Sin Affinity Colors */
+  .sin-wrath { color: hsl(0 60% 55%); }
+  .sin-lust { color: hsl(320 50% 60%); }
+  .sin-sloth { color: hsl(200 35% 50%); }
+  .sin-gluttony { color: hsl(30 60% 55%); }
+  .sin-gloom { color: hsl(260 45% 55%); }
+  .sin-pride { color: hsl(45 70% 60%); }
+  .sin-envy { color: hsl(140 45% 45%); }
+  
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(260 25% 8%);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, hsl(45 30% 30%) 0%, hsl(45 25% 25%) 100%);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, hsl(45 40% 40%) 0%, hsl(45 35% 35%) 100%);
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+    background: linear-gradient(180deg, hsl(45 50% 45%) 0%, hsl(45 45% 35%) 100%);
+    border: 1px solid hsl(45 60% 50%);
+    color: hsl(260 25% 8%);
+    font-family: 'Cinzel', serif;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(180deg, hsl(45 55% 50%) 0%, hsl(45 50% 40%) 100%);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+    background: linear-gradient(180deg, hsl(260 20% 18%) 0%, hsl(260 25% 12%) 100%);
+    border: 1px solid hsl(45 30% 25%);
+    color: hsl(40 25% 75%);
+    font-family: 'Cinzel', serif;
+  }
+  
+  .btn-secondary:hover {
+    background: linear-gradient(180deg, hsl(260 20% 23%) 0%, hsl(260 25% 17%) 100%);
+    border-color: hsl(45 40% 35%);
+  }
+  
+  /* Ornate Divider */
+  .ornate-divider {
+    @apply w-full h-px my-4;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsl(45 40% 30%) 20%, 
+      hsl(45 60% 50%) 50%, 
+      hsl(45 40% 30%) 80%, 
+      transparent 100%
+    );
+  }
+  
+  /* Keypage Text Style */
+  .keypage-text {
+    @apply text-xs italic leading-relaxed;
+    color: hsl(45 25% 55%);
+    font-family: 'Crimson Text', serif;
+  }
+  
+  /* Recipe Text */
+  .recipe-text {
+    @apply text-xs;
+    color: hsl(260 15% 50%);
+    font-family: 'Crimson Text', serif;
+  }
+  
+  /* Category Badge */
+  .category-badge {
+    @apply px-2 py-0.5 text-xs rounded;
+    background: hsl(260 20% 18%);
+    border: 1px solid hsl(45 25% 30%);
+    color: hsl(45 30% 65%);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: hsl(45 60% 55%);
+  }
+  
+  .text-parchment {
+    color: hsl(40 25% 75%);
+  }
+  
+  .text-purple-light {
+    color: hsl(280 30% 70%);
+  }
+  
+  .bg-purple-deep {
+    background-color: hsl(260 30% 8%);
+  }
+  
+  .border-gold {
+    border-color: hsl(45 50% 40%);
+  }
+  
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+}
